@@ -1,0 +1,142 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class PlayerStatisticsCalculator {
+    public PlayerStatisticsCalculator() {
+        JFrame MyFrame = new JFrame();
+        MyFrame.setBackground(Color.YELLOW);
+        MyFrame.setVisible(true);
+        MyFrame.setTitle("Player Average and Strike Rate Calculator");
+        MyFrame.setLayout(new BorderLayout());
+        MyFrame.setBounds(400, 400, 400, 400);
+        MyFrame.setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
+
+        JPanel Panel = new JPanel();
+        Panel.setBackground(Color.gray);
+        Panel.setLayout(new GridBagLayout());
+
+        // ----------------------------------------------------------------------
+        JLabel Enter_Runs = new JLabel("Enter Runs");
+        Enter_Runs.setBounds(470, 150, 200, 50);
+        Enter_Runs.setFont(new Font("Serif", Font.BOLD, 16));
+        Enter_Runs.setForeground(Color.black);
+
+        JLabel Enter_Runs1 = new JLabel("Enter Runs");
+        Enter_Runs1.setBounds(470, 440, 200, 50);
+        Enter_Runs1.setFont(new Font("Serif", Font.BOLD, 16));
+        Enter_Runs1.setForeground(Color.black);
+
+        JLabel EnterBalls = new JLabel("Enter Balls");
+        EnterBalls.setBounds(470, 230, 200, 50);
+        EnterBalls.setFont(new Font("Serif", Font.BOLD, 16));
+        EnterBalls.setForeground(Color.black);
+
+        JLabel EnterBalls1 = new JLabel("Enter Outs");
+        EnterBalls1.setBounds(470, 530, 200, 50);
+        EnterBalls1.setFont(new Font("Serif", Font.BOLD, 16));
+        EnterBalls1.setForeground(Color.black);
+
+        JLabel Heading = new JLabel("Calculate Average and SR of Player");
+        Heading.setBounds(380, 10, 1000, 100);
+        Heading.setFont(new Font("Montserrat", Font.BOLD, 40));
+        Heading.setForeground(Color.black);
+
+        JLabel ResultOfSR = new JLabel();
+        ResultOfSR.setBounds(550, 350, 200, 50);
+        ResultOfSR.setFont(new Font("Serif", Font.BOLD, 20));
+
+        JLabel ResultOfAvg = new JLabel();
+        ResultOfAvg.setBounds(550, 650, 300, 50);
+        ResultOfAvg.setFont(new Font("Serif", Font.BOLD, 20));
+
+        JLabel Calculate_SR_Here = new JLabel();
+        Calculate_SR_Here.setBounds(300, 100, 300, 50);
+        Calculate_SR_Here.setText("Calculate Strike Rate Below");
+        Calculate_SR_Here.setFont(new Font("Robot", Font.PLAIN, 20));
+        Calculate_SR_Here.setForeground(Color.black);
+
+        JLabel Calculate_Avg = new JLabel();
+        Calculate_Avg.setBounds(300, 365, 300, 100);
+        Calculate_Avg.setText("Calculate Average below");
+        Calculate_Avg.setFont(new Font("Roboto", Font.PLAIN, 20));
+        Calculate_Avg.setForeground(Color.black);
+        // ----------------------------------------------------------------------
+
+        JTextField Runs = new JTextField();
+        Runs.setBounds(550, 152, 200, 50);
+        Runs.setFont(new Font("Regular", Font.BOLD, 15));
+        Runs.setForeground(Color.black);
+
+        JTextField Runs1 = new JTextField();
+        Runs1.setBounds(550, 442, 200, 50);
+        Runs1.setFont(new Font("Regular", Font.BOLD, 15));
+        Runs1.setForeground(Color.black);
+
+        JTextField Balls = new JTextField();
+        Balls.setBounds(550, 232, 200, 50);
+        Balls.setFont(new Font("Regular", Font.BOLD, 15));
+        Balls.setForeground(Color.black);
+
+        JTextField Out = new JTextField();
+        Out.setBounds(550, 532, 200, 50);
+        Out.setFont(new Font("Regular", Font.BOLD, 15));
+        Out.setForeground(Color.black);
+        // ----------------------------------------------------------------------
+
+        JButton CalculateSR = new JButton();
+        CalculateSR.setText("Calculate SR");
+        CalculateSR.setBounds(550, 315, 200, 50);
+        CalculateSR.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        CalculateSR.setBackground(Color.white);
+        CalculateSR.setForeground(Color.black);
+        CalculateSR.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float runs = Integer.parseInt(Runs.getText());
+                float balls = Integer.parseInt(Balls.getText());
+                float strikeRate = (runs / balls) * 100;
+                ResultOfSR.setText("SR of Player is : " + String.format("%.2f", strikeRate));
+            }
+        });
+
+        JButton CalculateAvg = new JButton();
+        CalculateAvg.setBounds(550, 610, 200, 50);
+        CalculateAvg.setText("Calculate AVG");
+        CalculateAvg.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        CalculateAvg.setBackground(Color.white);
+        CalculateAvg.setForeground(Color.black);
+        CalculateAvg.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float runs1 = Integer.parseInt(Runs1.getText());
+                float out = Integer.parseInt(Out.getText());
+                float average = (runs1 / out);
+                ResultOfAvg.setText("Average of Player is : " + String.format("%.2f", average));
+
+            }
+        });
+        // --------------------------------------------------------
+        MyFrame.add(CalculateSR);
+        MyFrame.add(Enter_Runs);
+        MyFrame.add(Runs);
+        MyFrame.add(Balls);
+        MyFrame.add(EnterBalls);
+        MyFrame.add(Heading);
+        MyFrame.add(ResultOfSR);
+        MyFrame.add(ResultOfAvg);
+        MyFrame.add(Calculate_Avg);
+        MyFrame.add(Enter_Runs1);
+        MyFrame.add(EnterBalls1);
+        MyFrame.add(Calculate_SR_Here);
+        MyFrame.add(Runs1);
+        MyFrame.add(CalculateAvg);
+        MyFrame.add(Out);
+        MyFrame.add(Panel);
+    }
+
+    public static void main(String[] args) {
+        new PlayerStatisticsCalculator();
+    }
+}
